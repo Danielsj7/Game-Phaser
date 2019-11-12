@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat Socket IO</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pong</title>
+    <style>
+        main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        #contenedor {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Whatsapp hommie getting good, ha</h1>
-    <div id="container"></div>
-    <button id="button"></button>
-    <script src="/socket.io/socket.io.js" charset="UTF-8"></script>
+    <main>
+        <div id="contenedor"></div>
+    </main>
+
+    <script src="./node_modules/phaser/dist/phaser.js"></script>
+    <script src="./src/init.js" type="module"></script>
     <script src="main.js"></script>
-    
 </body>
 </html>
