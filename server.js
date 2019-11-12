@@ -38,8 +38,8 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         //console.log(typeof socket.id);
         // console.log( Array.isArray(players))
-        console.log(players)
-        console.log(socket.id)
+        // console.log(players)
+        // console.log(socket.id)
         players = players.filter(el => el.id !== socket.id);// ? Revisar esta sentencia
         console.log(`The user ${id} has disconnected`);
     });
