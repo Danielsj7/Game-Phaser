@@ -20,16 +20,16 @@ class jugador extends Phaser.GameObjects.Sprite {
         this.teclas = this.scene.input.keyboard.addKeys('d,a,w');
         this.life = 3;
         this.velocidad = 0;
-        this.mandarPos = function(id){
-            console.log('Estoy mandando mi info: ' + id)
+        this.mandarPos = function (idt) {
             let info = {
-                idp: id,
-                x : this.x,
-                y : this.y
+                id: idt,
+                x: this.x,
+                y: this.y
             }
+            console.log(info);
             return info;
         }
-        
+
 
     }
 
@@ -41,7 +41,7 @@ class jugador extends Phaser.GameObjects.Sprite {
             if (this.move !== "run") {
                 this.anims.play('arquero_run');
                 this.move = "run";
-                
+
             }
         } else if (this.teclas.d.isDown) {
             this.body.setVelocityX(100);
@@ -50,7 +50,7 @@ class jugador extends Phaser.GameObjects.Sprite {
             if (this.move !== "run") {
                 this.anims.play('arquero_run');
                 this.move = "run";
-                
+
             }
         } else {
             this.body.setVelocityX(0);
@@ -60,8 +60,8 @@ class jugador extends Phaser.GameObjects.Sprite {
             }
 
         }
-       
-        
+
+
 
 
         if (Phaser.Input.Keyboard.JustDown(this.teclas.w) && !this.jumping) {

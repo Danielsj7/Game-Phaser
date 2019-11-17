@@ -18,10 +18,13 @@ class scenaA extends Phaser.Scene {
 
     create() {
         this.socket = io();
+        this.id;
 
-        // this.socket.emit('login', () => {
-            
-        // });
+        this.socket.on('connect', (id) => {
+            id = this.socket.id;
+        });
+
+
         this.add.image(0, 0, 'fondo').setOrigin(0);
 
         this.wall_floor = this.physics.add.staticGroup();
@@ -42,6 +45,7 @@ class scenaA extends Phaser.Scene {
         if (this.eleccion === true) {
 
             this.mago = new jugador2({
+                id: this.socket.id,
                 scene: this,
                 x: 300,
                 y: 100
@@ -71,6 +75,7 @@ class scenaA extends Phaser.Scene {
 
         } else {
             this.arquero = new jugador({
+                id: this.socket.id,
                 scene: this,
                 x: 100,
                 y: 100,
@@ -106,20 +111,24 @@ class scenaA extends Phaser.Scene {
         }
 
         this.physics.add.collider([this.arquero, this.mago], this.wall_floor);
+        console.log("aaaaaa"+this.id)
+        if (this.eleccion === true) {
+            
+            this.info = this.mago.mandarPos(this.socket.id);
+            this.socket.emit('login', this.info)
 
+        } else {
+            this.info = this.arquero.mandarPos(this.socket.id);
+            this.socket.emit('login', this.info)
+
+        }
     }
     update() {
-        this.id = this.socket.id;
         if (this.eleccion === true) {
-            this.info = this.mago.mandarPos(this.id);
-            this.socket.emit('login', this.info)
             this.mago.update();
-          
         } else {
-            this.info = this.arquero.mandarPos(this.id);
-            this.socket.emit('login', this.info)
             this.arquero.update();
-            
+
         }
     }
 }

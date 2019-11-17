@@ -1,8 +1,6 @@
 class jugador2 extends Phaser.GameObjects.Sprite {
     constructor(config) {
         super(config.scene, config.x, config.y, 'animacionmago');
-
-
         this.scene = config.scene;
         this.scene.add.existing(this);
         this.scene.physics.world.enable(this);
@@ -18,21 +16,18 @@ class jugador2 extends Phaser.GameObjects.Sprite {
         this.teclas = this.scene.input.keyboard.addKeys('d,a,w');
         this.life = 3;
         this.velocidad = 0;
-        this.mandarPos = function(id){
+        this.mandarPos = function (idt) {
             this.info = {
-                idp: id,
-                x : this.x,
-                y : this.y
+                id: idt,
+                x: this.x,
+                y: this.y
             }
+            console.log(info);
+            return this.info;
         }
-
-
-
 
     }
     update() {
-       
-        
 
         if (this.teclas.a.isDown) {
             this.body.setVelocityX(-100);

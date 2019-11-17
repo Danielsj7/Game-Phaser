@@ -47,10 +47,11 @@ io.on('connection', (socket) => {
     //Escuchamos en el socket el evento status y mostramos la info
     socket.on('login', (data) => {
         console.log('Estoy recibiendo la info de: ' + id)
-        let player = new Player(id, data.x, data.y); //Cambiar para parametros
+        let player = new Player(data.id, data.x, data.y); //Cambiar para parametros
         //console.log(`El usuario: ${player.id} está saludando desde (${player.x}, ${player.y}) `)
         if (players.length < 2) {
             players.push(player);
+            console.log(JSON.stringify(players))
         } else {
             // Si esa Id no estaba registrada, manda el error -Diferencia el recargar pag-  
             let found = false;       
@@ -64,7 +65,7 @@ io.on('connection', (socket) => {
                 msm = 'There is 2 players already, try later'
                 socket.emit('fullSala', msm)
             }
-
+            
         }
         console.log(`players length: ${players.length}`)
     })
