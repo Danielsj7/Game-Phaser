@@ -3,6 +3,7 @@ class Bootloader extends Phaser.Scene {
     super({ key: "Bootloader" });
   }
   preload() {
+    
     this.load.on("complete", () => { //metodo escucha
       this.scene.start("Scene_play"); //llamar la Ecena
     });
