@@ -1,21 +1,35 @@
 class Bootloader extends Phaser.Scene {
-  constructor() {
-    super({ key: "Bootloader" });
-  }
-  preload() {
+    constructor() {
+        super('Bootloader');
+    }
+
+    preload() {
+
+        this.load.setPath('./assets/');
+
+        this.load.image(['fondo', 'pared', 'piso', 'piso2', 'piso3','flecha','proyectil', 'mago1', 'arquero1']);
+        
+        
+        this.load.atlas('animacionarquero', 'animacionarquero.png', 'animacionarquero_atlas.json');
+        this.load.animation('animacion', 'animacionarquero_anim.json');
+
+        this.load.atlas('animacionmago', 'animacionmago.png', 'animacionmago_atlas.json');
+        this.load.animation('animacion2', 'animacionmago_anim.json');
+
+        this.load.atlas('quieto', 'quieto.png', 'quieto_atlas.json');
+        this.load.animation('animacion3', 'quieto_anim.json');
+        
+        this.load.on('complete', () => {
+            console.log('Load complete');
+            this.scene.start('scenaA');
+        });
+    }
+
+    create() {
+        
+        
+       
     
-    this.load.on("complete", () => { //metodo escucha
-      this.scene.start("Scene_play"); //llamar la Ecena
-    });
-    this.load.image("ball", "./assets/ball.png");
-    this.load.image("izquierda", "./assets/left_pallete.png");
-    this.load.image("derecha", "./assets/right_pallete.png");
-    this.load.image("linea", "./assets/separator.png");
-
-
-  }
-
-
+    }
 }
-
 export default Bootloader;

@@ -1,0 +1,84 @@
+{
+    "anims": [
+        {
+            "key": "arquero_run",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 14,
+            "frames": [
+                {
+                    "key": "animacionarquero",
+                    "frame": "3_walk_000"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "3_walk_001"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "3_walk_002"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "3_walk_003"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "3_walk_004"
+                }
+            ]
+        },
+        {
+            "key": "arquero_jump",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 14,
+            "frames": [
+                {
+                    "key": "animacionarquero",
+                    "frame": "4_jump_000"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "4_jump_001"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "4_jump_002"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "4_jump_003"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "4_jump_004"
+                }
+            ]
+        },
+        {
+            "key": "arquero_attack",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "animacionarquero",
+                    "frame": "5_attack_003"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "5_attack_005"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "5_attack_007"
+                },
+                {
+                    "key": "animacionarquero",
+                    "frame": "5_attack_009"
+                }
+            ]
+        }
+    ]
+}

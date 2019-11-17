@@ -1,0 +1,76 @@
+{
+    "anims": [
+        {
+            "key": "mago_run",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 14,
+            "frames": [
+                {
+                    "key": "animacionmago",
+                    "frame": "3_run_000"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "3_run_001"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "3_run_002"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "3_run_003"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "3_run_004"
+                }
+            ]
+        },
+        {
+            "key": "mago_jump",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "animacionmago",
+                    "frame": "4_jump_000"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "4_jump_001"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "4_jump_002"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "4_jump_003"
+                }
+            ]
+        },
+        {
+            "key": "mago_attack",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "animacionmago",
+                    "frame": "5_attack_004"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "5_attack_006"
+                },
+                {
+                    "key": "animacionmago",
+                    "frame": "5_attack_008"
+                }
+            ]
+        }
+    ]
+}

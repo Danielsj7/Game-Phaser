@@ -1,0 +1,60 @@
+{
+    "anims": [
+        {
+            "key": "arquero_quieto",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 20,
+            "frames": [
+                {
+                    "key": "quieto",
+                    "frame": "idle_000"
+                },
+                {
+                    "key": "quieto",
+                    "frame": "idle_001_(1)"
+                },
+                {
+                    "key": "quieto",
+                    "frame": "idle_001_(2)"
+                },
+                {
+                    "key": "quieto",
+                    "frame": "idle_001_(3)"
+                },
+                {
+                    "key": "quieto",
+                    "frame": "idle_001_(4)"
+                }
+            ]
+        },
+        {
+            "key": "mago_quieto",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 20,
+            "frames": [
+                {
+                    "key": "quieto",
+                    "frame": "1_idle_000"
+                },
+                {
+                    "key": "quieto",
+                    "frame": "1_idle_003"
+                },
+                {
+                    "key": "quieto",
+                    "frame": "1_idle_002"
+                },
+                {
+                    "key": "quieto",
+                    "frame": "1_idle_003"
+                },
+                {
+                    "key": "quieto",
+                    "frame": "1_idle_004"
+                }
+            ]
+        }
+    ]
+}

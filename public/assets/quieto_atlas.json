@@ -1,0 +1,125 @@
+{
+    "frames": [
+        {
+            "filename": "idle_000",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 104,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "idle_001_(1)",
+            "frame": {
+                "x": 104,
+                "y": 0,
+                "w": 104,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "idle_001_(2)",
+            "frame": {
+                "x": 208,
+                "y": 0,
+                "w": 104,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "idle_001_(3)",
+            "frame": {
+                "x": 312,
+                "y": 0,
+                "w": 104,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "idle_001_(4)",
+            "frame": {
+                "x": 416,
+                "y": 0,
+                "w": 104,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "1_idle_000",
+            "frame": {
+                "x": 0,
+                "y": 113,
+                "w": 93,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "1_idle_002",
+            "frame": {
+                "x": 93,
+                "y": 113,
+                "w": 93,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "1_idle_003",
+            "frame": {
+                "x": 186,
+                "y": 113,
+                "w": 93,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "1_idle_004",
+            "frame": {
+                "x": 279,
+                "y": 113,
+                "w": 93,
+                "h": 113
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Phaser3",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

@@ -3,10 +3,10 @@ console.log('I...Am...alive...')
 var players = []
 
 //Constructor of the player
-function Player(id, x, y) {
-    this.id = id;
+function Player(id, x ,y) {
+    this.id  = id;
     this.x = x;
-    this.y = y;
+    this.y  = y;
 }
 
 //dependencies
@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
 
     //Escuchamos en el socket el evento status y mostramos la info
     socket.on('login', (data) => {
-        console.log(data.x)
+        console.log('Estoy recibiendo la info de: ' + id)
         let player = new Player(id, data.x, data.y); //Cambiar para parametros
         //console.log(`El usuario: ${player.id} está saludando desde (${player.x}, ${player.y}) `)
         if (players.length < 2) {
