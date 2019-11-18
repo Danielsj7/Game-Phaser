@@ -1,9 +1,8 @@
 class jugador extends Phaser.GameObjects.Sprite {
-    constructor(config, socket) {
-
+    constructor(config) {
         super(config.scene, config.x, config.y, 'animacionarquero');
-        this.socket = socket;
-        this.id = this.socket.id;
+
+
         this.scene = config.scene;
         this.scene.add.existing(this);
         this.scene.physics.world.enable(this);
@@ -21,20 +20,12 @@ class jugador extends Phaser.GameObjects.Sprite {
         this.teclas = this.scene.input.keyboard.addKeys('d,a,w');
         this.life = 3;
         this.velocidad = 0;
-        this.mandarPos = function () {
-            let info = {
-                id: this.id,
-                x: this.x,
-                y: this.y
-            }
-            socket.emit('newPos', info)
-        }
+
 
 
     }
 
-    update(socket) {
-        this.mandarPos(socket);
+    update() {
         if (this.teclas.a.isDown) {
             this.body.setVelocityX(-100);
             this.flipX = true;
@@ -84,6 +75,22 @@ class jugador extends Phaser.GameObjects.Sprite {
     }
     flechacolision() {
         if (!this.hitDelay) {
+            if (this.life > 0) {
+                this.hitDelay = true;
+                this.life--;
+                this.scene.registry.events.emit('quitarvidaarquero');
+            }
+
+            if (this.life === 0) {
+                this.scene.registry.events.emit('perdio_arquero');
+            }
+            console.log("hirieron al arquero");
+            this.scene.time.addEvent({
+                delay: 600,
+                callback: () => {
+                    this.hitDelay = false;
+                }
+            });
 
         }
     }

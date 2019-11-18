@@ -1,5 +1,8 @@
 import Bootloader from './Bootloader.js';
 import scenaA from './scenes/scenaA.js';
+import start from "./scenes/start.js";
+import ui from './scenes/ui.js';
+
 
 
 const config = {
@@ -25,7 +28,7 @@ const config = {
         }
     },
     scene: [
-        Bootloader, scenaA
+        Bootloader, start ,scenaA, ui
     ]
 };
 

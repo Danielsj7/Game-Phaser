@@ -1,9 +1,8 @@
 class jugador2 extends Phaser.GameObjects.Sprite {
-    constructor(config, socket) {
-
+    constructor(config) {
         super(config.scene, config.x, config.y, 'animacionmago');
-        this.socket = socket;
-        this.id = this.socket.id;
+
+
         this.scene = config.scene;
         this.scene.add.existing(this);
         this.scene.physics.world.enable(this);
@@ -19,18 +18,13 @@ class jugador2 extends Phaser.GameObjects.Sprite {
         this.teclas = this.scene.input.keyboard.addKeys('d,a,w');
         this.life = 3;
         this.velocidad = 0;
-        this.mandarPos = function () {
-            let info = {
-                id: this.id,
-                x: this.x,
-                y: this.y
-            }
-            socket.emit('newPos', info)
-        }
+
+
+
+
 
     }
-    update(socket) {
-        this.mandarPos(socket);
+    update() {
         if (this.teclas.a.isDown) {
             this.body.setVelocityX(-100);
             this.flipX = true;
@@ -75,6 +69,32 @@ class jugador2 extends Phaser.GameObjects.Sprite {
             this.jumping = false;
         }
 
+
+    }
+    proyectilcolision() {
+
+        if (!this.hitDelay) {
+            if (this.life > 0) {
+                this.hitDelay = true;
+                this.life--;
+                
+                this.scene.registry.events.emit('quitarvidamago');
+                
+            }
+
+            if (this.life === 0) {
+                this.scene.registry.events.emit('perdio_mago');
+            }
+            console.log("hirieron al mago");
+            this.scene.time.addEvent({
+                delay: 600,
+                callback: () => {
+                    this.hitDelay = false;
+                    console.log(this.hitDelay);
+                }
+            });
+
+        }
 
     }
 }
