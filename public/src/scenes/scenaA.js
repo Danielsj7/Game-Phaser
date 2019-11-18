@@ -9,6 +9,7 @@ class scenaA extends Phaser.Scene {
         super({
             key: 'scenaA'
         });
+        this.socket = io();
     }
 
 
@@ -17,12 +18,9 @@ class scenaA extends Phaser.Scene {
     }
 
     create() {
-        this.socket = io();
-        this.id;
+        this.id = this.socket.id;
+        console.log(this.id);
 
-        this.socket.on('connect', (id) => {
-            id = this.socket.id;
-        });
 
 
         this.add.image(0, 0, 'fondo').setOrigin(0);
@@ -44,12 +42,11 @@ class scenaA extends Phaser.Scene {
         this.eleccion = false;
         if (this.eleccion === true) {
 
-            this.mago = new jugador2({
-                id: this.socket.id,
+            this.player = new jugador2({
                 scene: this,
                 x: 300,
                 y: 100
-            });
+            }, this.socket);
 
             this.grupoproyectil = new proyectil({
                 physicsWorld: this.physics.world,
@@ -60,10 +57,9 @@ class scenaA extends Phaser.Scene {
             this.variable = true;
             this.input.on(eventos.POINTER_DOWN, (evento) => {
                 if (evento.isDown && this.variable === true) {
-                    this.grupoproyectil.addproyectil(this.mago.x, this.mago.y - 10, this.mago.velocidad);
-                    this.mago.anims.play('mago_attack');
-                    this.mago.anims.stop()
-                    console.log(this.mago);
+                    this.grupoproyectil.addproyectil(this.player.x, this.player.y - 10, this.player.velocidad);
+                    this.player.anims.play('mago_attack');
+                    this.player.anims.stop()
                     this.variable = false;
                 }
             });
@@ -74,13 +70,12 @@ class scenaA extends Phaser.Scene {
             });
 
         } else {
-            this.arquero = new jugador({
-                id: this.socket.id,
+            this.player = new jugador({
                 scene: this,
                 x: 100,
                 y: 100,
 
-            });
+            }, this.socket);
 
             //flechas arquero
             this.grupoflecha = new flecha({
@@ -95,41 +90,65 @@ class scenaA extends Phaser.Scene {
             this.variable = true;
             this.input.on(eventos.POINTER_DOWN, (evento) => {
                 if (evento.isDown && this.variable === true) {
-                    this.grupoflecha.addflecha(this.arquero.x, this.arquero.y - 10, this.arquero.velocidad);
-                    this.arquero.anims.play('arquero_attack');
-                    this.arquero.anims.stop()
-                    console.log(this.arquero);
+                    this.grupoflecha.addflecha(this.player.x, this.player.y - 10, this.player.velocidad);
+                    this.player.anims.play('arquero_attack');
+                    this.player.anims.stop()
                     this.variable = false;
                 }
             });
-            this.physics.add.collider([this.arquero, this.mago], this.wall_floor);
+            this.physics.add.collider([this.player, this.player], this.wall_floor);
             this.physics.add.collider(this.grupoflecha, this.wall_floor, () => {
                 this.grupoflecha.destruirflecha();
                 this.variable = true;
             });
 
-        }
-
-        this.physics.add.collider([this.arquero, this.mago], this.wall_floor);
-        console.log("aaaaaa"+this.id)
-        if (this.eleccion === true) {
-            
-            this.info = this.mago.mandarPos(this.socket.id);
-            this.socket.emit('login', this.info)
-
-        } else {
-            this.info = this.arquero.mandarPos(this.socket.id);
-            this.socket.emit('login', this.info)
 
         }
+        this.socket.emit('login', this.player)
+        this.socket.on('fullSala', () => {
+            document.write('Sala llena, intentelo más tarde');
+        })
+
+        this.socket.on('2player', (players) => {
+            console.log('2PLAYER ON')
+            if (this.id != players[0].id) {
+                this.player2 = new jugador2({
+                    scene: this,
+                    x: players[0].x,
+                    y: players[0].y,
+
+                }, this.socket);
+
+            } else {
+                //Actualizar al players[0]
+                this.player2 = new jugador2({
+                    scene: this,
+                    x: players[1].x,
+                    y: players[1].y,
+                }, this.socket);
+                this.physics.add.collider([this.player2, this.player2], this.wall_floor);
+            }
+            this.physics.add.collider([this.player2, this.player2], this.wall_floor);
+
+
+        });
+
+        this.socket.on('otherPlayer', (players) => {
+            if (this.id != players[0].id) {
+                //Actualizar al players[0]
+                this.player2.x = players[0].x;
+                this.player2.y = players[0].y;
+            } else {
+                //Actualizar al players[1]
+                this.player2.x = players[1].x;
+                this.player2.y = players[1].y;
+            }
+        })
+        this.physics.add.collider([this.player, this.player], this.wall_floor);
+
     }
     update() {
-        if (this.eleccion === true) {
-            this.mago.update();
-        } else {
-            this.arquero.update();
-
-        }
+        this.player.update(this.socket);
     }
 }
 
